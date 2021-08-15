@@ -1,10 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
+const cors = require('cors')
 const app = express()
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors())
 const route = express.Router()
 
 const port = process.env.PORT || 5000
