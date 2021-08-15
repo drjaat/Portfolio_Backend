@@ -25,10 +25,10 @@ const transporter = nodemailer.createTransport({
 })
 
 route.post('/text-mail', (req, res) => {
-  const { to, subject, text } = req.body
+  const { from, subject, text } = req.body
   const mailData = {
-    from: 'drjaat1998@gmail.com',
-    to: to,
+    from: from,
+    to: 'drjaat1998@gmail.com',
     subject: subject,
     text: text,
     html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer<br/>',
