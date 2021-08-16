@@ -21,8 +21,8 @@ const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   auth: {
-    user: 'drjaat1998@gmail.com',
-    pass: 'Drjaat@1998',
+    user: 'YOURMAIL@gmail.com',
+    pass: 'YOURPASS ',
   },
 })
 
@@ -30,7 +30,7 @@ route.post('/text-mail', (req, res) => {
   const { from, subject, text } = req.body
   const mailData = {
     from: from,
-    to: 'drjaat1998@gmail.com',
+    to: 'YOURMAIL@gmail.com',
     subject: subject,
     text: text,
     html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer<br/>',
