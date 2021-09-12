@@ -35,7 +35,7 @@ route.post('/text-mail', (req, res) => {
   const { from, subject, text } = req.body
   const mailData = {
     from: from,
-    to: 'YOURMAIL@gmail.com',
+    to: constants.USER,
     subject: subject,
     text: text,
     html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer<br/>',
