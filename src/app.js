@@ -1,13 +1,15 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
 const cors = require('cors')
 const app = express()
-// Parse incoming requests data (https://github.com/expressjs/body-parser)
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cors())
+const constants = require('../constants')
+
+const dotenv = require('dotenv')
+dotenv.config()
+
+app.use(express.json())
 const route = express.Router()
+app.use(cors())
 
 const port = process.env.PORT || 5000
 
@@ -21,12 +23,15 @@ const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 465,
   auth: {
-    user: 'drjaat1998@gmail.com',
-    pass: 'Drjaat@1998',
+    user: constants.USER,
+    pass: constants.PASS,
   },
 })
 
+console.log(constants)
 route.post('/text-mail', (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*')
+
   const { from, subject, text } = req.body
   const mailData = {
     from: from,
